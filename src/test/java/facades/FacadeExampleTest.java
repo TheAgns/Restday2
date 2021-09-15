@@ -69,13 +69,13 @@ class EmployeeFacadeTest {
     @Disabled //Reset id somehow?
     void getEmployeeById() {
         Employee employee = facade.getEmployeeById(1);
-        assertEquals("Ellen",employee.getName());
+        assertEquals("Markus",employee.getName());
     }
 
     @Test
     void getEmployeesByName() {
-        List<Employee> employees = facade.getEmployeesByName("Mathias");
-        assertEquals("Mathias",employees.get(0).getName());
+        List<Employee> employees = facade.getEmployeesByName("Musti");
+        assertEquals("Musti",employees.get(0).getName());
     }
 
     @Test

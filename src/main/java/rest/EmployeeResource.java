@@ -58,12 +58,19 @@ import java.util.List;
             //System.out.println("--------------->"+count);
             return "10";  //Done manually so no need for a DTO
         }
+        @Path("populate")
+        @GET
+        @Produces({MediaType.APPLICATION_JSON})
+        public String getPeople() {
+            Populator.populate();
+            return "You are now populated";
+        }
 
         @Path("all")
         @GET
         @Produces({MediaType.APPLICATION_JSON})
         public String getAllEmployees() {
-            Populator.populate();
+            //Populator.populate();
             List<Employee> employees = FACADE.getAll();
             List<EmployeeDTO> employeeDTOS = new ArrayList<>();
             for (Employee employee : employees) {
@@ -79,7 +86,7 @@ import java.util.List;
         @GET
         @Produces({MediaType.APPLICATION_JSON})
         public String getEmployeeById(@PathParam("id") Integer id) {
-            Populator.populate();
+            //Populator.populate();
             Employee employee = FACADE.getEmployeeById(id);
             EmployeeDTO employeeDTO = new EmployeeDTO(employee);
             return new Gson().toJson(employeeDTO);
@@ -89,7 +96,7 @@ import java.util.List;
         @GET
         @Produces({MediaType.APPLICATION_JSON})
         public String getHighestPaid() {
-            Populator.populate();
+            //Populator.populate();
             List<Employee> employees = FACADE.getEmployeesWithHighestSalary();
 
             List<EmployeeDTO> employeeDTOS = new ArrayList<>();
@@ -107,7 +114,7 @@ import java.util.List;
         @GET
         @Produces({MediaType.APPLICATION_JSON})
         public String getEmployeeByName(@PathParam("name") String name) {
-            Populator.populate();
+            //Populator.populate();
             List<Employee> employees = FACADE.getEmployeesByName(name);
             List<EmployeeDTO> employeeDTOS = new ArrayList<>();
             for (Employee employee : employees) {
